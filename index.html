@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raja Pooran Kumar — Senior Android Developer & Fintech Specialist</title>
+<meta name="description" content="Senior Android Developer specializing in Fintech systems, POS Terminals, EMV, ISO 8583, and NFC. EMVCo, Visa & Mastercard Certified.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=JetBrains+Mono:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080c0f;
+  --bg2:#0d1117;
+  --bg3:#131920;
+  --border:#1e2a35;
+  --border2:#2a3a4a;
+  --gold:#d4a843;
+  --gold2:#f0c060;
+  --text:#e8edf2;
+  --text2:#8fa3b8;
+  --text3:#4a6070;
+  --green:#2ecc71;
+  --blue:#3b82f6;
+  --card:#0f1820;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden;}
+
+/* NOISE TEXTURE OVERLAY */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(8,12,15,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--gold);letter-spacing:-.02em;}
+.nav-logo span{color:var(--text2);font-weight:400;font-size:13px;display:block;font-family:'JetBrains Mono',monospace;letter-spacing:.05em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:13px;letter-spacing:.04em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{font-size:12px;padding:7px 16px;border:1px solid var(--gold);border-radius:4px;color:var(--gold);text-decoration:none;letter-spacing:.04em;text-transform:uppercase;transition:all .2s;}
+.nav-cta:hover{background:var(--gold);color:var(--bg);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1200px;margin:0 auto;width:100%;align-items:center;}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem;}
+.hero-tag::before{content:'';width:30px;height:1px;background:var(--gold);}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:1rem;}
+.hero-name .accent{color:var(--gold);}
+.hero-title{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--text2);letter-spacing:.05em;margin-bottom:1.5rem;padding:.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.hero-desc{color:var(--text2);font-size:15px;line-height:1.7;margin-bottom:2rem;max-width:480px;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;padding:12px 24px;background:var(--gold);color:var(--bg);font-weight:600;font-size:13px;text-decoration:none;border-radius:4px;letter-spacing:.02em;transition:all .2s;}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-1px);}
+.btn-outline{display:inline-flex;align-items:center;gap:.5rem;padding:12px 24px;border:1px solid var(--border2);color:var(--text);font-size:13px;text-decoration:none;border-radius:4px;transition:all .2s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.hs{padding:1.5rem;background:var(--card);text-align:center;}
+.hs-n{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1;}
+.hs-l{font-size:11px;color:var(--text2);text-transform:uppercase;letter-spacing:.06em;margin-top:.4rem;font-family:'JetBrains Mono',monospace;}
+.hero-certs{margin-top:1.5rem;padding:1rem 1.5rem;background:var(--card);border:1px solid var(--border);border-radius:8px;display:flex;flex-direction:column;gap:.6rem;}
+.cert-row{display:flex;align-items:center;gap:.75rem;font-size:12px;font-family:'JetBrains Mono',monospace;}
+.cert-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;}
+.cert-name{color:var(--gold);}
+.cert-detail{color:var(--text3);}
+.hero-bg{position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at 70% 40%,rgba(212,168,67,.04) 0%,transparent 70%);pointer-events:none;}
+.hero-line{position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--border),transparent);}
+
+/* SECTIONS */
+section{padding:5rem 2rem;position:relative;}
+.container{max-width:1200px;margin:0 auto;width:100%;}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1rem;line-height:1.1;}
+.section-sub{color:var(--text2);font-size:15px;max-width:560px;line-height:1.7;margin-bottom:3rem;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.25rem;transition:border-color .2s;}
+.skill-card:hover{border-color:var(--gold);}
+.sk-icon{font-size:1.5rem;margin-bottom:.75rem;}
+.sk-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:.5rem;font-family:'JetBrains Mono',monospace;}
+.sk-tags{display:flex;flex-wrap:wrap;gap:.35rem;}
+.tag{font-size:10px;padding:2px 7px;border-radius:3px;background:rgba(212,168,67,.08);color:var(--gold);border:1px solid rgba(212,168,67,.15);font-family:'JetBrains Mono',monospace;letter-spacing:.02em;}
+.tag.blue{background:rgba(59,130,246,.08);color:#60a5fa;border-color:rgba(59,130,246,.2);}
+.tag.green{background:rgba(46,204,113,.08);color:#4ade80;border-color:rgba(46,204,113,.2);}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .25s;position:relative;}
+.proj-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.proj-card.featured{grid-column:span 2;}
+.proj-header{padding:1.5rem 1.5rem 0;display:flex;justify-content:space-between;align-items:flex-start;}
+.proj-type{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:3px;background:rgba(212,168,67,.1);color:var(--gold);border:1px solid rgba(212,168,67,.2);}
+.proj-company{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;}
+.proj-body{padding:1rem 1.5rem 1.25rem;}
+.proj-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:.5rem;}
+.proj-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:1rem;}
+.proj-metrics{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1rem;}
+.pm{display:flex;flex-direction:column;}
+.pm-n{font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;color:var(--gold);}
+.pm-l{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;}
+.proj-stack{display:flex;flex-wrap:wrap;gap:.35rem;}
+.proj-visual{height:4px;background:linear-gradient(to right,var(--gold),rgba(212,168,67,.1));margin-top:0;}
+
+/* TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;}
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;position:relative;}
+.testi-card::before{content:'\201C';font-family:'Playfair Display',serif;font-size:5rem;line-height:.8;color:rgba(212,168,67,.12);position:absolute;top:.5rem;left:1rem;}
+.testi-text{font-size:14px;line-height:1.75;color:var(--text2);margin-bottom:1.25rem;position:relative;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:.75rem;}
+.testi-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:16px;font-weight:700;flex-shrink:0;}
+.av1{background:rgba(212,168,67,.15);color:var(--gold);}
+.av2{background:rgba(59,130,246,.15);color:#60a5fa;}
+.av3{background:rgba(46,204,113,.15);color:#4ade80;}
+.testi-name{font-size:13px;font-weight:600;}
+.testi-role{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;}
+.stars-row{display:flex;gap:2px;margin-bottom:.75rem;}
+.star{color:var(--gold);font-size:12px;}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem;}
+.svc-section{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:2rem;position:relative;overflow:hidden;}
+.svc-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.svc-section.fintech::before{background:linear-gradient(to right,var(--gold),rgba(212,168,67,.2));}
+.svc-section.web::before{background:linear-gradient(to right,#3b82f6,rgba(59,130,246,.2));}
+.svc-category{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem;}
+.svc-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:.5rem;}
+.svc-desc{font-size:13px;color:var(--text2);margin-bottom:1.5rem;line-height:1.6;}
+.pkg-list{display:flex;flex-direction:column;gap:.75rem;}
+.pkg{border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;position:relative;transition:border-color .2s;}
+.pkg:hover{border-color:var(--border2);}
+.pkg.best{border-color:rgba(212,168,67,.35);background:rgba(212,168,67,.04);}
+.pkg-best-badge{position:absolute;top:-8px;right:12px;background:var(--gold);color:var(--bg);font-size:9px;padding:2px 8px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-weight:600;letter-spacing:.05em;text-transform:uppercase;}
+.pkg-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem;}
+.pkg-name2{font-size:13px;font-weight:600;}
+.pkg-price2{text-align:right;}
+.pkg-amount2{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:700;color:var(--gold);line-height:1;}
+.pkg-mo{font-size:10px;color:var(--text3);}
+.pkg-features{display:flex;flex-direction:column;gap:.3rem;}
+.pf2{font-size:12px;color:var(--text2);display:flex;gap:.5rem;}
+.pf2::before{content:'→';color:var(--gold);flex-shrink:0;font-size:11px;}
+
+/* CERTIFICATIONS */
+.certs-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.25rem;text-align:center;transition:border-color .2s;}
+.cert-card:hover{border-color:var(--gold);}
+.cert-logo{font-size:2rem;margin-bottom:.75rem;}
+.cert-issuer{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.25rem;}
+.cert-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:.4rem;}
+.cert-detail2{font-size:11px;color:var(--text2);line-height:1.5;}
+.cert-badge{display:inline-block;margin-top:.75rem;font-size:9px;padding:2px 8px;border-radius:3px;background:rgba(46,204,113,.1);color:#4ade80;border:1px solid rgba(46,204,113,.2);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.05em;}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.contact-info{display:flex;flex-direction:column;gap:1rem;}
+.ci{display:flex;align-items:center;gap:1rem;padding:.875rem 1rem;background:var(--card);border:1px solid var(--border);border-radius:8px;}
+.ci-icon{font-size:1.1rem;flex-shrink:0;}
+.ci-label{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.05em;}
+.ci-value{font-size:13px;font-weight:500;color:var(--text);}
+.ci-value a{color:var(--gold);text-decoration:none;}
+.avail-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:rgba(46,204,113,.08);border:1px solid rgba(46,204,113,.2);border-radius:4px;font-size:12px;color:#4ade80;font-family:'JetBrains Mono',monospace;margin-bottom:1.5rem;}
+.avail-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.contact-form{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:2rem;}
+.cf-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:1.25rem;}
+.field{margin-bottom:1rem;}
+.field label{display:block;font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;}
+.field input,.field textarea,.field select{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:.625rem .875rem;color:var(--text);font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold);}
+.field textarea{resize:vertical;min-height:100px;}
+.field select option{background:var(--bg2);}
+.submit-btn{width:100%;padding:.875rem;background:var(--gold);color:var(--bg);font-weight:700;font-size:13px;border:none;border-radius:6px;cursor:pointer;letter-spacing:.04em;text-transform:uppercase;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.submit-btn:hover{background:var(--gold2);transform:translateY(-1px);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:12px;color:var(--text3);font-family:'JetBrains Mono',monospace;}
+footer a{color:var(--gold);text-decoration:none;}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--border),transparent);margin:0 2rem;}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero-grid,.projects-grid,.services-grid,.contact-grid,.testimonials-grid,.certs-row,.skills-grid{grid-template-columns:1fr;}
+  .proj-card.featured{grid-column:span 1;}
+  .nav-links{display:none;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+}
+
+/* HIGHLIGHT NUMBERS */
+.num-highlight{color:var(--gold);font-family:'JetBrains Mono',monospace;font-weight:600;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">RPK<span>// Senior Fintech Engineer</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:rajakumar22104@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-bg"></div>
+  <div class="hero-grid container">
+    <div>
+      <div class="hero-tag">Available for Remote Roles Globally</div>
+      <h1 class="hero-name">Raja Pooran<br><span class="accent">Kumar</span></h1>
+      <div class="hero-title">// SENIOR ANDROID & FINTECH ENGINEER · KARACHI, PK</div>
+      <p class="hero-desc">5+ years building production-grade POS terminals, payment SDKs, and enterprise fintech applications. Delivered 7+ production apps serving thousands. Expert in ISO 8583, EMV, NFC, and cryptographic authentication. EMVCo, Visa & Mastercard certified.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View Portfolio →</a>
+        <a href="#contact" class="btn-outline">Start a Project</a>
+        <a href="mailto:rajakumar22104@gmail.com" class="btn-outline">📧 Email Me</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-stats">
+        <div class="hs"><div class="hs-n">30K+</div><div class="hs-l">Daily Transactions<br>Processed</div></div>
+        <div class="hs"><div class="hs-n">100+</div><div class="hs-l">Merchant Terminals<br>Deployed</div></div>
+        <div class="hs"><div class="hs-n">10+</div><div class="hs-l">Enterprise SDK<br>Clients</div></div>
+        <div class="hs"><div class="hs-n">5+</div><div class="hs-l">Years Fintech<br>Experience</div></div>
+      </div>
+      <div class="hero-certs">
+        <div class="cert-row"><span class="cert-dot"></span><span class="cert-name">EMVCo Level 1 & 2</span><span class="cert-detail">— Chip & PIN · NFC · Cryptographic Auth</span></div>
+        <div class="cert-row"><span class="cert-dot"></span><span class="cert-name">Visa Certified</span><span class="cert-detail">— POS Integration · Authorization · Settlement</span></div>
+        <div class="cert-row"><span class="cert-dot"></span><span class="cert-name">Mastercard Certified</span><span class="cert-detail">— POS Integration · Contactless · Compliance</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-line"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Technical Expertise</div>
+    <h2 class="section-title">Skills & Stack</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="sk-icon">📱</div>
+        <div class="sk-title">Android Development</div>
+        <div class="sk-tags">
+          <span class="tag">Kotlin</span><span class="tag">Java</span><span class="tag">Jetpack Compose</span><span class="tag">Android SDK</span><span class="tag">Kotlin Coroutines</span><span class="tag">Flow</span><span class="tag">Hilt / Dagger</span><span class="tag">Navigation Component</span><span class="tag">Retrofit</span><span class="tag">Room</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="sk-icon">💳</div>
+        <div class="sk-title">Payments & Fintech</div>
+        <div class="sk-tags">
+          <span class="tag">ISO 8583</span><span class="tag">EMV Chip & PIN</span><span class="tag">NFC Contactless</span><span class="tag">POS Terminal Development</span><span class="tag">Multi-Acquirer Routing</span><span class="tag">Settlement & Reconciliation</span><span class="tag">Payment Gateway Integration</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="sk-icon">🏦</div>
+        <div class="sk-title">Open Banking & Wallets</div>
+        <div class="sk-tags">
+          <span class="tag blue">PISP</span><span class="tag blue">Open Banking</span><span class="tag blue">Digital Wallet</span><span class="tag blue">KYC Onboarding</span><span class="tag blue">IBAN Transfers</span><span class="tag blue">Raast Instant Payments</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="sk-icon">🔐</div>
+        <div class="sk-title">Security & Compliance</div>
+        <div class="sk-tags">
+          <span class="tag green">FIDO2</span><span class="tag green">Passkey Auth</span><span class="tag green">PCI DSS Compliance</span><span class="tag green">CDCVM</span><span class="tag green">SCA</span><span class="tag green">Certificate Pinning</span><span class="tag green">End-to-End Encryption</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="sk-icon">📐</div>
+        <div class="sk-title">Architecture</div>
+        <div class="sk-tags">
+          <span class="tag">MVVM</span><span class="tag">Clean Architecture</span><span class="tag">BLoC</span><span class="tag">Repository Pattern</span><span class="tag">Dependency Injection</span><span class="tag">TDD</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="sk-icon">🦋</div>
+        <div class="sk-title">Cross-Platform & Integrations</div>
+        <div class="sk-tags">
+          <span class="tag blue">Flutter</span><span class="tag blue">Dart</span><span class="tag">REST APIs</span><span class="tag">Hardware SDK</span><span class="tag">Firebase</span><span class="tag">Google Maps SDK</span><span class="tag">CI/CD</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Work History & Portfolio</div>
+    <h2 class="section-title">Production Projects</h2>
+    <p class="section-sub">Every project listed is live in production, verified by market usage, and follows stringent payment compliance regulations.</p>
+    <div class="projects-grid">
+
+      <!-- LOOP POS - Featured -->
+      <div class="proj-card featured">
+        <div class="proj-visual"></div>
+        <div class="proj-header">
+          <span class="proj-type">POS Terminal · Android SDK</span>
+          <span class="proj-company">Techbey · Feb 2026 – Present</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">LOOP POS Terminal & Custom SDK</div>
+          <div class="proj-desc">Led end-to-end development of Techbey’s flagship Android POS terminal. Built the full payment lifecycle (sale, void, settlement) via ISO 8583. Designed a multi-bank acquirer payment routing system that reduces failure by 35%. Shipped a reusable Android SDK currently exposing POS payment flows and ISO messaging, adopted by top tier merchants.</div>
+          <div class="proj-metrics">
+            <div class="pm"><span class="pm-n">30,000+</span><span class="pm-l">Daily Transactions</span></div>
+            <div class="pm"><span class="pm-n">10+</span><span class="pm-l">Enterprise Merchants</span></div>
+            <div class="pm"><span class="pm-n">35%</span><span class="pm-l">Routing Failure Reduction</span></div>
+            <div class="pm"><span class="pm-n">90%+</span><span class="pm-l">Automated Test Coverage</span></div>
+          </div>
+          <div class="proj-stack">
+            <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">Java XML</span><span class="tag">ISO 8583</span><span class="tag">Android SDK</span><span class="tag">JUnit</span><span class="tag">Espresso</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- KEENU POS -->
+      <div class="proj-card">
+        <div class="proj-visual"></div>
+        <div class="proj-header">
+          <span class="proj-type">POS Terminal</span>
+          <span class="proj-company">Keenu · Aug 2023 – Feb 2026</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Keenu POS Application</div>
+          <div class="proj-desc">Built the full-cycle Android payment terminal software deployed across 100+ merchant terminals. Integrated ISO 8583 protocol, chip and PIN, and hardware vendor SDKs to process PCI DSS-compliant transactions securely.</div>
+          <div class="proj-metrics">
+            <div class="pm"><span class="pm-n">100+</span><span class="pm-l">Merchant Terminals</span></div>
+            <div class="pm"><span class="pm-n">PCI DSS</span><span class="pm-l">Compliant</span></div>
+          </div>
+          <div class="proj-stack">
+            <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">EMV</span><span class="tag">NFC</span><span class="tag">ISO 8583</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPEN BANKING -->
+      <div class="proj-card">
+        <div class="proj-visual" style="background:linear-gradient(to right,#3b82f6,rgba(59,130,246,.1));"></div>
+        <div class="proj-header">
+          <span class="proj-type" style="background:rgba(59,130,246,.1);color:#60a5fa;border-color:rgba(59,130,246,.2);">Open Banking · PISP</span>
+          <span class="proj-company">Keenu · Aug 2023 – Feb 2026</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Open Banking PISP App</div>
+          <div class="proj-desc">Delivered a Flutter-based open banking app enabling instant bank transfers and national ID-based fund transfers. Compliant with State Bank guidelines and secured with FIDO2 biometric auth.</div>
+          <div class="proj-metrics">
+            <div class="pm"><span class="pm-n">Real-time</span><span class="pm-l">Bank Transfers</span></div>
+            <div class="pm"><span class="pm-n">FIDO2</span><span class="pm-l">Authentication</span></div>
+          </div>
+          <div class="proj-stack">
+            <span class="tag blue">Flutter</span><span class="tag blue">Dart</span><span class="tag blue">FIDO2</span><span class="tag blue">Open Banking</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIGITAL WALLET -->
+      <div class="proj-card">
+        <div class="proj-visual" style="background:linear-gradient(to right,#4ade80,rgba(74,222,128,.1));"></div>
+        <div class="proj-header">
+          <span class="proj-type" style="background:rgba(46,204,113,.1);color:#4ade80;border-color:rgba(46,204,113,.2);">Digital Wallet Rebuild</span>
+          <span class="proj-company">Keenu · Aug 2023 – Feb 2026</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Keenu Digital Wallet</div>
+          <div class="proj-desc">Rebuilt original Ionic wallet into Flutter using Clean Architecture. Drastically improved scalability and performance, integrating Passkey and cardholder verification for secure mobile wallet transactions.</div>
+          <div class="proj-metrics">
+            <div class="pm"><span class="pm-n">40%</span><span class="pm-l">Faster Load Time</span></div>
+            <div class="pm"><span class="pm-n">Passkey</span><span class="pm-l">Integration</span></div>
+          </div>
+          <div class="proj-stack">
+            <span class="tag green">Flutter</span><span class="tag green">Clean Architecture</span><span class="tag green">Passkey</span><span class="tag green">CDCVM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOBILE LENDING -->
+      <div class="proj-card">
+        <div class="proj-visual" style="background:linear-gradient(to right,#a78bfa,rgba(167,139,250,.1));"></div>
+        <div class="proj-header">
+          <span class="proj-type" style="background:rgba(167,139,250,.1);color:#a78bfa;border-color:rgba(167,139,250,.2);">Lending · FinTech</span>
+          <span class="proj-company">Xflow · Oct 2021 – Aug 2023</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Mobile Lending & Fintech Solution</div>
+          <div class="proj-desc">Launched a full mobile lending application in Flutter with automated KYC onboarding, repayment scheduling, and core loan management APIs. Also integrated digital wallet features across multiple logistics/e-comm ecosystems.</div>
+          <div class="proj-metrics">
+            <div class="pm"><span class="pm-n">15,000+</span><span class="pm-l">Initial Downloads</span></div>
+            <div class="pm"><span class="pm-n">Full KYC</span><span class="pm-l">Pipeline</span></div>
+          </div>
+          <div class="proj-stack">
+            <span class="tag" style="background:rgba(167,139,250,.1);color:#a78bfa;border-color:rgba(167,139,250,.2);">Flutter</span><span class="tag" style="background:rgba(167,139,250,.1);color:#a78bfa;border-color:rgba(167,139,250,.2);">KYC</span><span class="tag" style="background:rgba(167,139,250,.1);color:#a78bfa;border-color:rgba(167,139,250,.2);">Wallet Integration</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGIC DESIGN APPS -->
+      <div class="proj-card">
+        <div class="proj-visual" style="background:linear-gradient(to right,#f97316,rgba(249,115,22,.1));"></div>
+        <div class="proj-header">
+          <span class="proj-type" style="background:rgba(249,115,22,.1);color:#fb923c;border-color:rgba(249,115,22,.2);">E-Comm · Logistics</span>
+          <span class="proj-company">Logic Design · May 2021 – Oct 2021</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-name">Rimattire & Sky Freight</div>
+          <div class="proj-desc">Shipped Flutter applications for high-traffic e-commerce and critical logistics tracking. Integrated Google Maps SDK for real-time cargo tracking, REST APIs, and seamless QR scanning functionality.</div>
+          <div class="proj-metrics">
+            <div class="pm"><span class="pm-n">4.5+ Star</span><span class="pm-l">Store Rating</span></div>
+            <div class="pm"><span class="pm-n">Maps SDK</span><span class="pm-l">Integration</span></div>
+          </div>
+          <div class="proj-stack">
+            <span class="tag" style="background:rgba(249,115,22,.1);color:#fb923c;border-color:rgba(249,115,22,.2);">Flutter</span><span class="tag" style="background:rgba(249,115,22,.1);color:#fb923c;border-color:rgba(249,115,22,.2);">Maps SDK</span><span class="tag" style="background:rgba(249,115,22,.1);color:#fb923c;border-color:rgba(249,115,22,.2);">QR Scanner</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-label">Client Feedback</div>
+    <h2 class="section-title">What Industry Professionals Say</h2>
+    <p class="section-sub">Feedback from engineering leads and product teams I've partnered with directly.</p>
+    <div class="testimonials-grid">
+
+      <div class="testi-card">
+        <div class="stars-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="testi-text">"Raja delivered the LOOP POS SDK to an exceptional standard. His ISO 8583 implementation was bulletproof — we had zero host communication issues at launch. The routing system he designed saved weeks of labor and drastically improved transaction success rates."</div>
+        <div class="testi-author">
+          <div class="testi-avatar av1">A</div>
+          <div>
+            <div class="testi-name">Ahmed K.</div>
+            <div class="testi-role">CTO · Techbey</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="testi-text">"Rebuilding the Keenu digital wallet in Flutter with Raja led to immediate performance upgrades. 40% faster load times, drastically cleaner architecture. His FIDO2 and Passkey integrations satisfied high regulatory and PCI compliance demands easily."</div>
+        <div class="testi-author">
+          <div class="testi-avatar av2">S</div>
+          <div>
+            <div class="testi-name">Sara M.</div>
+            <div class="testi-role">Product Lead · Keenu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <div class="testi-text">"Built our lending platform with full automated KYC and reliable payment triggers. Clear communicator who understands complex financial flows without constant handholding. Code is always robust and highly maintainable. Highly recommended."</div>
+        <div class="testi-author">
+          <div class="testi-avatar av3">F</div>
+          <div>
+            <div class="testi-name">Faisal R.</div>
+            <div class="testi-role">Executive Director · Xflow</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container">
+    <div class="section-label">Industry Credentials</div>
+    <h2 class="section-title">Certifications</h2>
+    <div class="certs-row">
+      <div class="cert-card">
+        <div class="cert-logo">🏅</div>
+        <div class="cert-issuer">EMVCo</div>
+        <div class="cert-title">EMV Level 1 & Level 2</div>
+        <div class="cert-detail2">Chip & PIN · NFC Contactless · Cryptographic Authentication</div>
+        <span class="cert-badge">Verified</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-logo">💳</div>
+        <div class="cert-issuer">Visa</div>
+        <div class="cert-title">Visa Scheme & Network</div>
+        <div class="cert-detail2">POS Integration · Authorization · Settlement & Scheme Compliance</div>
+        <span class="cert-badge">Verified</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-logo">🔷</div>
+        <div class="cert-issuer">Mastercard</div>
+        <div class="cert-title">Mastercard Scheme & Network</div>
+        <div class="cert-detail2">POS Integration · Transaction Processing · Contactless & Network Compliance</div>
+        <span class="cert-badge">Verified</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">Offerings</div>
+    <h2 class="section-title">Professional Services</h2>
+    <p class="section-sub">Senior fintech engineering engagements for payment institutions, and managed digital growth tracks.</p>
+    <div class="services-grid">
+
+      <!-- FINTECH SERVICES -->
+      <div class="svc-section fintech">
+        <div class="svc-category">Track 01</div>
+        <div class="svc-title">Fintech Engineering</div>
+        <div class="svc-desc">Senior Mobile Engineer specialized in financial stacks. Remote available for contracts and permanent roles.</div>
+        <div class="pkg-list">
+          <div class="pkg">
+            <div class="pkg-top">
+              <div class="pkg-name2">POS Terminal Architecture</div>
+              <div class="pkg-price2"><div class="pkg-amount2">$75/hr</div><div class="pkg-mo">or project rate</div></div>
+            </div>
+            <div class="pkg-features">
+              <div class="pf2">Full lifecycle ISO 8583 host messaging</div>
+              <div class="pf2">EMV Chip & PIN / NFC Contactless logic</div>
+              <div class="pf2">Custom hardware SDK integration</div>
+            </div>
+          </div>
+          <div class="pkg best">
+            <div class="pkg-best-badge">Highly Requested</div>
+            <div class="pkg-top">
+              <div class="pkg-name2">Android Fintech SDK</div>
+              <div class="pkg-price2"><div class="pkg-amount2">$85/hr</div><div class="pkg-mo">or project rate</div></div>
+            </div>
+            <div class="pkg-features">
+              <div class="pf2">Portable Android SDK for merchant integrations</div>
+              <div class="pf2">90%+ Unit & Integration testing logic</div>
+              <div class="pf2">PCI-compliant data security patterns</div>
+            </div>
+          </div>
+          <div class="pkg">
+            <div class="pkg-top">
+              <div class="pkg-name2">Open Banking / PISP Hub</div>
+              <div class="pkg-price2"><div class="pkg-amount2">$70/hr</div></div>
+            </div>
+            <div class="pkg-features">
+              <div class="pf2">Flutter/Android PISP integration</div>
+              <div class="pf2">FIDO2 Biometrics & SCA inclusion</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEB SERVICES -->
+      <div class="svc-section web">
+        <div class="svc-category">Track 02</div>
+        <div class="svc-title">Business Digital Presence</div>
+        <div class="svc-desc">Full corporate digital identity, website design, and growth automation packs. Fixed pricing models.</div>
+        <div class="pkg-list">
+          <div class="pkg">
+            <div class="pkg-top">
+              <div class="pkg-name2">Standard Growth Pack</div>
+              <div class="pkg-price2"><div class="pkg-amount2">$699</div><div class="pkg-mo">Fixed Price</div></div>
+            </div>
+            <div class="pkg-features">
+              <div class="pf2">Premium business website with custom .com</div>
+              <div class="pf2">Fully mobile optimized + Booking portal</div>
+              <div class="pf2">Local SEO & Google Maps activation</div>
+            </div>
+          </div>
+          <div class="pkg best">
+            <div class="pkg-best-badge">Best ROI</div>
+            <div class="pkg-top">
+              <div class="pkg-name2">Market Authority Pack</div>
+              <div class="pkg-price2"><div class="pkg-amount2">$899</div><div class="pkg-mo">Fixed Price</div></div>
+            </div>
+            <div class="pkg-features">
+              <div class="pf2">Complete high-tier SEO strategy</div>
+              <div class="pf2">Missed-call automated response tech</div>
+              <div class="pf2">Social verification & automation setup</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Let's Connect</div>
+    <h2 class="section-title">Hire or Partner</h2>
+    <p class="section-sub">Open for contract work, full-time roles, or technical audits. Usually reply within 24 hours.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="avail-badge"><span class="avail-dot"></span>Accepting Invitations · May 2026</div>
+        <div class="contact-info">
+          <div class="ci">
+            <span class="ci-icon">📧</span>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-value"><a href="mailto:rajakumar22104@gmail.com">rajakumar22104@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="ci">
+            <span class="ci-icon">📱</span>
+            <div>
+              <div class="ci-label">WhatsApp / Direct</div>
+              <div class="ci-value"><a href="https://wa.me/923313894217">+92 331 3894217</a></div>
+            </div>
+          </div>
+          <div class="ci">
+            <span class="ci-icon">🔗</span>
+            <div>
+              <div class="ci-label">LinkedIn</div>
+              <div class="ci-value"><a href="https://linkedin.com/in/raja-pooran-kumar-37b208160" target="_blank">linkedin.com/in/raja-pooran-kumar</a></div>
+            </div>
+          </div>
+          <div class="ci">
+            <span class="ci-icon">💻</span>
+            <div>
+              <div class="ci-label">GitHub</div>
+              <div class="ci-value"><a href="https://github.com/Raja1234p" target="_blank">github.com/Raja1234p</a></div>
+            </div>
+          </div>
+          <div class="ci">
+            <span class="ci-icon">📍</span>
+            <div>
+              <div class="ci-label">Location</div>
+              <div class="ci-value">Karachi, Pakistan (Available Globally)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="cf-title">Start a Conversation</div>
+        <div class="field">
+          <label>Name</label>
+          <input type="text" id="formName" placeholder="e.g. John Doe">
+        </div>
+        <div class="field">
+          <label>Objective</label>
+          <select id="formSubject">
+            <option>Senior Android Role</option>
+            <option>Fintech Contracting</option>
+            <option>SDK Development</option>
+            <option>Business Package</option>
+            <option>Other Inquiry</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Details</label>
+          <textarea id="formMsg" placeholder="Brief overview of what you need..."></textarea>
+        </div>
+        <button class="submit-btn" onclick="handleSubmit()">Send Notification →</button>
+        <p style="font-size:11px;color:var(--text3);text-align:center;margin-top:.75rem;font-family:'JetBrains Mono',monospace;">Or instant chat: +92 331 3894217</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Raja Pooran Kumar · Senior Android Developer · Fintech & Payment Specialist</p>
+  <p style="margin-top:.4rem;">EMVCo · Visa · Mastercard Certified Professional</p>
+</footer>
+
+<script>
+// Intersection observer for fade-in
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Form submit 
+function handleSubmit(){
+  const btn=document.querySelector('.submit-btn');
+  btn.textContent='Constructing Email...';
+  
+  const name=document.getElementById('formName').value;
+  const subject=document.getElementById('formSubject').value;
+  const msg=document.getElementById('formMsg').value;
+  
+  const mailto=`mailto:rajakumar22104@gmail.com?subject=Portfolio Inquiry: ${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nSubject: ${subject}\n\nMessage:\n${msg}`)}`;
+  window.location.href=mailto;
+  
+  setTimeout(()=>{
+    btn.textContent='Message Triggered ✓';
+    btn.style.background='#2ecc71';
+  }, 800);
+}
+
+// Smooth nav highlight
+const sections=document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(s=>{
+    const sectionTop = s.offsetTop;
+    if(window.pageYOffset >= sectionTop - 120){
+      current = s.getAttribute('id');
+    }
+  });
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
+  });
+});
+</script>
+</body>
+</html>
